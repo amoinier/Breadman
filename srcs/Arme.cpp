@@ -15,7 +15,8 @@ Arme::Arme()
 }
 void Arme::changeArme(int idArme){
 
-    switch(idArme){
+    switch(idArme)
+	{
         case 1 :
             nom = "Carambar";
             puissance = 10;
@@ -36,11 +37,11 @@ void Arme::changeArme(int idArme){
 
 }
 
-int Arme::getPuissance()const{
-
+int Arme::getPuissance()const
+{
     return puissance; // Retourne la puissance de l'arme.
 }
-string Arme::getNom()const{
-
+string Arme::getNom()const
+{
     return nom; // Retourne le nom de l'arme.
 }

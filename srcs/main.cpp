@@ -108,19 +108,19 @@ int main(int argc, char *argv[])
 
     // Chargement de la carte.
     if (!chargerNiveau(carte))
-    exit(EXIT_FAILURE); // Arr�t du programme si 'niveaux.map' n'a pas pu �tre ouvert.
+      exit(EXIT_FAILURE); // Arr�t du programme si 'niveaux.map' n'a pas pu �tre ouvert.
 
 
     // Gestion des positions � l'aide de SDl_Rect.
     // Position hero :
-    positionHero.x = LARGEUR_FENETRE/2; // On positionne le h�ro au milieu de la fen�tre.
-    positionHero.y = HAUTEUR_FENETRE/2;
+    positionHero.x = LARGEUR_FENETRE / 2; // On positionne le h�ro au milieu de la fen�tre.
+    positionHero.y = HAUTEUR_FENETRE / 2;
     positionHero.w = 16; // On indique la taille du sprite en pixel.
     positionHero.h = 27;
 
     // Position de l'ennemie.
-    positionEnnemis.x = 5*34; // On positionne le h�ro au milieu de la fen�tre.
-    positionEnnemis.y = 5*34;
+    positionEnnemis.x = 5 * 34; // On positionne le h�ro au milieu de la fen�tre.
+    positionEnnemis.y = 5 * 34;
     positionEnnemis.w = 16; // On indique la taille du sprite en pixel.
     positionEnnemis.h = 27;
 
@@ -143,27 +143,27 @@ int main(int argc, char *argv[])
     positionCoeur.y = 1500;
 
     // Diff�rentes jauges de vie.
-    SDL_Surface *jaugeVieImage= SDL_LoadBMP ("Ressources/images/jauge.bmp");//chargement de l'image de la jauge
+    SDL_Surface *jaugeVieImage = SDL_LoadBMP ("Ressources/images/jauge.bmp");//chargement de l'image de la jauge
 
     // Jauge de l'ennemie.
     SDL_Rect jaugeDeVieEnnemiPosition;//cr�ation d'un sdl rect pour la position de la jauge
     SDL_Rect jaugeDeVieEnnemiValeur;//cr�ation d'un sdl rect pour la selection de la partie de l'image de la jauge voulue
     jaugeDeVieEnnemiPosition.x = positionEnnemis.x;//on positionne la jauge au dessu de l'ennemie
-    jaugeDeVieEnnemiPosition.y = positionEnnemis.y -5;
-    jaugeDeVieEnnemiValeur.x=0;//on place le rectange au debut de l'image de la jauge
-    jaugeDeVieEnnemiValeur.y=0;
-    jaugeDeVieEnnemiValeur.h=3;//on indique la taille finale de la jauge
-    jaugeDeVieEnnemiValeur.w=16;
+    jaugeDeVieEnnemiPosition.y = positionEnnemis.y - 5;
+    jaugeDeVieEnnemiValeur.x = 0;//on place le rectange au debut de l'image de la jauge
+    jaugeDeVieEnnemiValeur.y = 0;
+    jaugeDeVieEnnemiValeur.h = 3;//on indique la taille finale de la jauge
+    jaugeDeVieEnnemiValeur.w = 16;
 
     // Jauge du heroe.
     SDL_Rect jaugeDeVieHeroePosition;
     SDL_Rect jaugeDeVieHeroeValeur;
     jaugeDeVieHeroePosition.x = positionHero.x;
-    jaugeDeVieHeroePosition.y = positionHero.y -5;
-    jaugeDeVieHeroeValeur.x=0;
-    jaugeDeVieHeroeValeur.y=0;
-    jaugeDeVieHeroeValeur.h=3;
-    jaugeDeVieHeroeValeur.w=16;
+    jaugeDeVieHeroePosition.y = positionHero.y - 5;
+    jaugeDeVieHeroeValeur.x = 0;
+    jaugeDeVieHeroeValeur.y = 0;
+    jaugeDeVieHeroeValeur.h = 3;
+    jaugeDeVieHeroeValeur.w = 16;
 
     // Active la r�p�tition des touches pour �viter d'appuyer plusieurs fois sur les touches
     SDL_EnableKeyRepeat(1,1);
@@ -179,14 +179,14 @@ int main(int argc, char *argv[])
         // Actualisation de la jauge de l'ennemie en fonction de sa vie et de sa position.
         jaugeDeVieEnnemiPosition.x = positionEnnemis.x;
         jaugeDeVieEnnemiPosition.y = positionEnnemis.y -5;
-        jaugeDeVieEnnemiValeur.x=0.16*(100-ennemi.getVie());
+        jaugeDeVieEnnemiValeur.x = 0.16 * (100 - ennemi.getVie());
         /*comme la jauge fais 16px et que la valeurs de la vie
         va de 0 � 100 on multiplie par 0.16).*/
 
         // Actualisation de la jauge du h�roe en fonction de sa vie et de sa position.
         jaugeDeVieHeroePosition.x = positionHero.x;
-        jaugeDeVieHeroePosition.y = positionHero.y-5;
-        jaugeDeVieHeroeValeur.x=0.16*(100-bread.getVie());
+        jaugeDeVieHeroePosition.y = positionHero.y - 5;
+        jaugeDeVieHeroeValeur.x = 0.16 * (100 - bread.getVie());
 
         SDL_Delay(5); // Ralentissement de la vitesse du personnage.
 
@@ -196,7 +196,8 @@ int main(int argc, char *argv[])
 
         if (tempsActuel - tempsPrecedent2 > 100){ // Animation des fleurs.
         tempsPrecedent2 = tempsActuel; // On reaffecte � temps pr�cedent le temps actuel.
-        if (v>3){v=0;} // Si on d�passe 4 on retourne � 1.
+        if (v > 3)
+        	v = 0; // Si on d�passe 4 on retourne � 1.
         nouvelleFeuilleFrame = feuilleFrame[0][v]; // On stock l'image de la feuille dans la variable finale.
         v++;
         }
@@ -205,65 +206,73 @@ int main(int argc, char *argv[])
         ainsi que l'animation, le deplacement et la collision de l'ennemi.*/
 
         Uint8 *keystates = SDL_GetKeyState( NULL ); // Initialisation de 'SDL_GetKeyState' et son raccourcis.
-        if (keystates[SDLK_UP]){
+        if (keystates[SDLK_UP])
+		{
             variableSensHeroe = 0;
             // Tout le code jusqu'au 'deplacement' sert � animer le sprite avec 4 images.
-            if (tempsActuel - tempsPrecedent > 100){ // Si 100ms ce sont �coul�.
+            if (tempsActuel - tempsPrecedent > 100)
+			{ // Si 100ms ce sont �coul�.
                 tempsPrecedent = tempsActuel; // On affecte a la variable temps pr�c�dent le temps actuel.
-                if (n>3){n=0;} // Si n est sup�rieur � 4 on retourne � 1 pour faire l'animation en boucle.
-                    nouveauSensHeroe = heroeSens[0][n]; // On affecte l'image � charger.
-                    n++; // On incr�mente n.
-                }
-                if (collision(&positionHero, &positionEnnemis, 1) == 0 ){
-                    deplacement(carte, &positionHero, 1, 1);
-                }
-        }
-        if (keystates[SDLK_DOWN]){
-            variableSensHeroe = 1;
-            if (tempsActuel - tempsPrecedent > 100){
-                tempsPrecedent = tempsActuel;
-                if (n>3){n=0;}
-                    nouveauSensHeroe = heroeSens[1][n];
-                    n++;
-                }
-            if (collision(&positionHero, &positionEnnemis, 2) == 0 ){
-                deplacement(carte, &positionHero, 2, 1);
+                if (n > 3)
+					n = 0; // Si n est sup�rieur � 4 on retourne � 1 pour faire l'animation en boucle.
+                nouveauSensHeroe = heroeSens[0][n]; // On affecte l'image � charger.
+                n++; // On incr�mente n.
             }
+            if (collision(&positionHero, &positionEnnemis, 1) == 0 )
+                deplacement(carte, &positionHero, 1, 1);
         }
-        if (keystates[SDLK_LEFT]){
+        if (keystates[SDLK_DOWN])
+		{
+            variableSensHeroe = 1;
+            if (tempsActuel - tempsPrecedent > 100)
+			{
+                tempsPrecedent = tempsActuel;
+                if (n > 3)
+					n = 0;
+                nouveauSensHeroe = heroeSens[1][n];
+                n++;
+            }
+            if (collision(&positionHero, &positionEnnemis, 2) == 0)
+                deplacement(carte, &positionHero, 2, 1);
+        }
+        if (keystates[SDLK_LEFT])
+		{
             variableSensHeroe = 2;
             if (tempsActuel - tempsPrecedent > 100){
                 tempsPrecedent = tempsActuel;
-                if (n>3){n=0;}
-                    nouveauSensHeroe = heroeSens[2][n];
-                    n++;
-                }
-            if (collision(&positionHero, &positionEnnemis, 3) == 0 ){
+                if (n > 3)
+					n = 0;
+                nouveauSensHeroe = heroeSens[2][n];
+                n++;
+            }
+            if (collision(&positionHero, &positionEnnemis, 3) == 0 )
                 deplacement(carte, &positionHero, 3, 1);
-                }
         }
-        if (keystates[SDLK_RIGHT]){
+        if (keystates[SDLK_RIGHT])
+		{
             variableSensHeroe = 3;
             if (tempsActuel - tempsPrecedent > 100){
                 tempsPrecedent = tempsActuel;
-                if (n>3){n=0;}
-                    nouveauSensHeroe = heroeSens[3][n];
-                    n++;
-                }
-            if (collision(&positionHero, &positionEnnemis, 4) == 0 ){
+                if (n > 3)
+					n = 0;
+                nouveauSensHeroe = heroeSens[3][n];
+                n++;
+            }
+            if (collision(&positionHero, &positionEnnemis, 4) == 0 )
                 deplacement(carte, &positionHero, 4, 1);
-                }
         }
-
-        if ((((positionHero.x/TAILLE_BLOC) == positionEnnemis.x/TAILLE_BLOC) && ((positionHero.y/TAILLE_BLOC)-1 == positionEnnemis.y/TAILLE_BLOC)) ||
-            ((((positionHero.x/TAILLE_BLOC) == positionEnnemis.x/TAILLE_BLOC) && (positionHero.y/TAILLE_BLOC)-2 == positionEnnemis.y/TAILLE_BLOC))){
-                if(collision(&positionEnnemis, &positionHero, 2) == 0){
-                    if (tempsActuel - tempsPrecedent4 > 100){ // Si 100ms se sont �coul�.
+        if ((((positionHero.x / TAILLE_BLOC) == positionEnnemis.x / TAILLE_BLOC) && ((positionHero.y / TAILLE_BLOC) - 1 == positionEnnemis.y / TAILLE_BLOC)) ||
+            ((((positionHero.x / TAILLE_BLOC) == positionEnnemis.x / TAILLE_BLOC) && (positionHero.y / TAILLE_BLOC) - 2 == positionEnnemis.y / TAILLE_BLOC))){
+                if(collision(&positionEnnemis, &positionHero, 2) == 0)
+				{
+                    if (tempsActuel - tempsPrecedent4 > 100)
+					{ // Si 100ms se sont �coul�.
                         tempsPrecedent4 = tempsActuel; // On affecte a la variable temps pr�c�dent le temps actuel.
-                        if (w>3){w=0;} // Si w est sup�rieur � 4 on retourne � 1 pour faire l'animation en boucle.
-                            nouveauSensEnnemi = ennemiSens[1][w]; // On affecte l'image � charger.
-                            w++; // On incr�mente w.
-                        }
+                        if (w > 3)
+							w = 0; // Si w est sup�rieur � 4 on retourne � 1 pour faire l'animation en boucle.
+                        nouveauSensEnnemi = ennemiSens[1][w]; // On affecte l'image � charger.
+                        w++; // On incr�mente w.
+                    }
                     deplacement(carte, &positionEnnemis, 2, 1);
                     variableSensEnnemi = 1;
                 }
@@ -502,51 +511,57 @@ int main(int argc, char *argv[])
                     default:
                         break;
                 }
-                if(ennemi.enVie() == 0){
-                ennemi.setVie(100);
-                score+=1;
-                xaleatoire = aleatoire2()*TAILLE_BLOC;
-                yaleatoire = aleatoire3()*TAILLE_BLOC;
-                xcaleatoire = aleatoire4()*TAILLE_BLOC;
-                ycaleatoire = aleatoire5()*TAILLE_BLOC;
-                while(carte[xaleatoire/TAILLE_BLOC][yaleatoire/TAILLE_BLOC] == 1 || carte[xaleatoire/TAILLE_BLOC][yaleatoire/TAILLE_BLOC] == 4){
-                    xaleatoire = aleatoire2()*TAILLE_BLOC;
-                    yaleatoire = aleatoire3()*TAILLE_BLOC;
+                if(ennemi.enVie() == 0)
+				{
+                	ennemi.setVie(100);
+                	score+=1;
+                	xaleatoire = aleatoire2()*TAILLE_BLOC;
+                	yaleatoire = aleatoire3()*TAILLE_BLOC;
+                	xcaleatoire = aleatoire4()*TAILLE_BLOC;
+                	ycaleatoire = aleatoire5()*TAILLE_BLOC;
+                	while (carte[xaleatoire/TAILLE_BLOC][yaleatoire/TAILLE_BLOC] == 1 ||
+					carte[xaleatoire/TAILLE_BLOC][yaleatoire/TAILLE_BLOC] == 4)
+					{
+                    	xaleatoire = aleatoire2()*TAILLE_BLOC;
+                    	yaleatoire = aleatoire3()*TAILLE_BLOC;
+                	}
+                	positionEnnemis.x = xaleatoire;
+                	positionEnnemis.y = yaleatoire;
+                	while (carte[xcaleatoire/TAILLE_BLOC][ycaleatoire/TAILLE_BLOC] == 1 ||
+					carte[xcaleatoire/TAILLE_BLOC][ycaleatoire/TAILLE_BLOC] == 4)
+					{
+                    	xcaleatoire = aleatoire4() * TAILLE_BLOC;
+                    	ycaleatoire = aleatoire5() * TAILLE_BLOC;
+                	}
+                	positionCoeur.x = xcaleatoire;
+                	positionCoeur.y = ycaleatoire;
                 }
-                positionEnnemis.x = xaleatoire;
-                positionEnnemis.y = yaleatoire;
-
-                while(carte[xcaleatoire/TAILLE_BLOC][ycaleatoire/TAILLE_BLOC] == 1 || carte[xcaleatoire/TAILLE_BLOC][ycaleatoire/TAILLE_BLOC] == 4){
-                    xcaleatoire = aleatoire4()*TAILLE_BLOC;
-                    ycaleatoire = aleatoire5()*TAILLE_BLOC;
-                }
-                positionCoeur.x = xcaleatoire;
-                positionCoeur.y = ycaleatoire;
-                }
-                if(positionCoeur.x/TAILLE_BLOC == positionHero.x/TAILLE_BLOC && positionCoeur.y/TAILLE_BLOC == positionHero.y/TAILLE_BLOC){
+                if(positionCoeur.x / TAILLE_BLOC == positionHero.x / TAILLE_BLOC && positionCoeur.y / TAILLE_BLOC == positionHero.y / TAILLE_BLOC)
+				{
                     bread.coeur();
                     positionCoeur.x = 2000;
                     positionCoeur.y = 2000;
                 }
-                if(bread.enVie() == 0){
-                    meilleur = lectureScore();
+                	if(bread.enVie() == 0){
+                    	meilleur = lectureScore();
                     if (score > meilleur){
                         ecritureScore(score);
                         meilleur = score;
                     }
                     sprintf(perdue, "Score : %d", score);
                     sprintf(hs, "Meilleur Score : %d", meilleur);
-                    positionTexte.x = 8*TAILLE_BLOC;
-                    positionTexte.y = 7*TAILLE_BLOC;
-                    positionTexte2.x = 5*TAILLE_BLOC;
-                    positionTexte2.y = 4*TAILLE_BLOC;
-                    positionTexte3.x = 5*TAILLE_BLOC;
-                    positionTexte3.y = 10*TAILLE_BLOC;
+                    positionTexte.x = 8 * TAILLE_BLOC;
+                    positionTexte.y = 7 * TAILLE_BLOC;
+                    positionTexte2.x = 5 * TAILLE_BLOC;
+                    positionTexte2.y = 4 * TAILLE_BLOC;
+                    positionTexte3.x = 5 * TAILLE_BLOC;
+                    positionTexte3.y = 10 * TAILLE_BLOC;
                     positionHero.x = 1500;
                     positionHero.y = 1500;
                     positionEnnemis.x = 1500;
                     positionEnnemis.y = 1500;
-                    if (tempsActuel-tempsPrecedent6 >1000){
+                    if (tempsActuel-tempsPrecedent6 >1000)
+					{
                         tempsPrecedent6 = tempsActuel;
                         textefin = TTF_RenderText_Blended(police, perdue, blanc);
                         textefin2 = TTF_RenderText_Blended(police, "Vous avez perdu.", blanc);
@@ -555,7 +570,6 @@ int main(int argc, char *argv[])
                 }
             }
         }
-
         // Affichage des images.
         SDL_SetColorKey(imageHeroe, SDL_SRCCOLORKEY, SDL_MapRGB(imageHeroe->format, 0, 0, 255)); // On met en transparence le bleu.
         SDL_BlitSurface(imageHeroe, &nouveauSensHeroe, ecran, &positionHero); // On affiche le heroe.
@@ -572,12 +586,9 @@ int main(int argc, char *argv[])
         SDL_BlitSurface(textefin, NULL, ecran, &positionTexte);
         SDL_BlitSurface(textefin2, NULL, ecran, &positionTexte2);
         SDL_BlitSurface(textefin3, NULL, ecran, &positionTexte3);
-
         SDL_Flip(ecran); // Rafra�chissement de l'�cran.
         }
-
     SDL_EnableKeyRepeat(0,0);
-
     // Lib�ration des surfaces charg�es.
     SDL_FreeSurface(mur);
     SDL_FreeSurface(arbre);
@@ -587,8 +598,6 @@ int main(int argc, char *argv[])
     SDL_FreeSurface(textefin2);
     SDL_FreeSurface(textefin);
     SDL_FreeSurface(coeur);
-
-
     TTF_CloseFont(police);
     TTF_Quit();
     SDL_Quit();
