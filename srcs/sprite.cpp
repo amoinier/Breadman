@@ -4,8 +4,7 @@ Assignation des images aux diff�rents tableaux pour les sprites
 et d�coupage des sprites images
 
 -----------------------------*/
-#include "sprite.h"
-#include <SDL/SDL.h>
+#include "breadman.h"
 
 void decouperSprite(SDL_Rect position[][5], int hauteur, int largeur, int lignes, int colonnes)
 {

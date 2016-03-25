@@ -4,11 +4,7 @@ Gestion des d�placement,
 collisions avec des obstacles
 
 ------------------------------*/
-#include <stdlib.h>
-#include <stdio.h>
-#include <SDL/SDL.h>
-
-#include "constantes.h"
+#include "breadman.h"
 
 void deplacement(int carte[][NB_BLOCS_HAUTEUR], SDL_Rect *pos, int direction, int vitesse)
 {
@@ -23,7 +19,6 @@ void deplacement(int carte[][NB_BLOCS_HAUTEUR], SDL_Rect *pos, int direction, in
             if (carte[((pos->x)+(pos->w)) / TAILLE_BLOC][((pos->y)-1) / TAILLE_BLOC] == 1 ||
                 carte[((pos->x)+(pos->w)) / TAILLE_BLOC][((pos->y)-1) / TAILLE_BLOC] == 4) // V�rifie qu'il y a un mur ou un arbre.
                 break;
-
             pos->y=pos->y-vitesse; // Deplacement du personnage.
             break;
 
@@ -37,7 +32,6 @@ void deplacement(int carte[][NB_BLOCS_HAUTEUR], SDL_Rect *pos, int direction, in
             if (carte[(pos->x) / TAILLE_BLOC][((pos->y)+(pos->h)+1) / TAILLE_BLOC] == 1 ||
                 carte[(pos->x) / TAILLE_BLOC][((pos->y)+(pos->h)+1) / TAILLE_BLOC] == 4)
                 break;
-
             pos->y=pos->y+vitesse;
             break;
 
@@ -51,7 +45,6 @@ void deplacement(int carte[][NB_BLOCS_HAUTEUR], SDL_Rect *pos, int direction, in
             if (carte[(pos->x-1) / TAILLE_BLOC][((pos->y)+(pos->h)) / TAILLE_BLOC] == 1 ||
                 carte[(pos->x-1) / TAILLE_BLOC][((pos->y)+(pos->h)) / TAILLE_BLOC] == 4)
                 break;
-
             pos->x=pos->x-vitesse;
             break;
 
@@ -65,7 +58,6 @@ void deplacement(int carte[][NB_BLOCS_HAUTEUR], SDL_Rect *pos, int direction, in
             if (carte[((pos->x)+(pos->w)+1) / TAILLE_BLOC][(pos->y) / TAILLE_BLOC] == 1 ||
                 carte[((pos->x)+(pos->w)+1) / TAILLE_BLOC][(pos->y) / TAILLE_BLOC] == 4)
                 break;
-
             pos->x=pos->x+vitesse;
             break;
     }

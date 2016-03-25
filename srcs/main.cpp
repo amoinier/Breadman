@@ -5,30 +5,12 @@ Gestion principale de la SDL
 
 ------------------------------*/
 
-// Include des diff�rentes librairies utilis�es.
-#include <stdlib.h>
-#include <stdio.h>
-#include <SDL/SDL.h>
-#include <iostream>
-#include <string>
-
 // Include des fonctions et objets dans les autres fichiers.
-#include "constantes.h"
-#include "Arme.h"
-#include "fichiers.h"
-#include "deplacement.h"
-#include "Personnage.h"
-#include "collisionennemis.h"
-#include "sprite.h"
-#include "aleatoire.h"
-#include "Score.h"
-
-
-using namespace std;
+#include "breadman.h"
 
 int main(int argc, char *argv[])
 {
-    Personnage bread, ennemi; // Cr�ation des diff�rents objets personnages.
+	Personnage bread, ennemi; // Cr�ation des diff�rents objets personnages.
 
     SDL_Surface *ecran = NULL, *mur = NULL, *arbre = NULL, *textefin = NULL, *textefin2 = NULL, *textefin3 = NULL, *coeur = NULL; // Cr�ation de diff�rents poiteurs pour les surfaces.
     SDL_Event event;
@@ -215,7 +197,7 @@ int main(int argc, char *argv[])
                 n++; // On incr�mente n.
             }
             if (collision(&positionHero, &positionEnnemis, 1) == 0 )
-                deplacement(carte, &positionHero, 1, 1);
+                deplacement(carte, &positionHero, 1, 2);
         }
         if (keystates[SDLK_DOWN])
 		{
@@ -229,7 +211,7 @@ int main(int argc, char *argv[])
                 n++;
             }
             if (collision(&positionHero, &positionEnnemis, 2) == 0)
-                deplacement(carte, &positionHero, 2, 1);
+                deplacement(carte, &positionHero, 2, 2);
         }
         if (keystates[SDLK_LEFT])
 		{
@@ -242,7 +224,7 @@ int main(int argc, char *argv[])
                 n++;
             }
             if (collision(&positionHero, &positionEnnemis, 3) == 0 )
-                deplacement(carte, &positionHero, 3, 1);
+                deplacement(carte, &positionHero, 3, 2);
         }
         if (keystates[SDLK_RIGHT])
 		{
@@ -255,7 +237,7 @@ int main(int argc, char *argv[])
                 n++;
             }
             if (collision(&positionHero, &positionEnnemis, 4) == 0 )
-                deplacement(carte, &positionHero, 4, 1);
+                deplacement(carte, &positionHero, 4, 2);
         }
         if ((((positionHero.x / TAILLE_BLOC) == positionEnnemis.x / TAILLE_BLOC) && ((positionHero.y / TAILLE_BLOC) - 1 == positionEnnemis.y / TAILLE_BLOC)) ||
             ((((positionHero.x / TAILLE_BLOC) == positionEnnemis.x / TAILLE_BLOC) && (positionHero.y / TAILLE_BLOC) - 2 == positionEnnemis.y / TAILLE_BLOC))){
@@ -269,7 +251,7 @@ int main(int argc, char *argv[])
                         nouveauSensEnnemi = ennemiSens[1][w]; // On affecte l'image � charger.
                         w++; // On incr�mente w.
                     }
-                    deplacement(carte, &positionEnnemis, 2, 1);
+                    deplacement(carte, &positionEnnemis, 2, 2);
                     variableSensEnnemi = 1;
                 }
 
@@ -284,7 +266,7 @@ int main(int argc, char *argv[])
                             nouveauSensEnnemi = ennemiSens[0][w]; // On affecte l'image � charger.
                             w++; // On incr�mente w.
                         }
-                    deplacement(carte, &positionEnnemis, 1, 1);
+                    deplacement(carte, &positionEnnemis, 1, 2);
                     variableSensEnnemi = 0;
                 }
             }
@@ -298,7 +280,7 @@ int main(int argc, char *argv[])
                             nouveauSensEnnemi = ennemiSens[3][w]; // On affecte l'image � charger.
                             w++; // On incr�mente w.
                         }
-                    deplacement(carte, &positionEnnemis, 4, 1);
+                    deplacement(carte, &positionEnnemis, 4, 2);
                     variableSensEnnemi = 3;
                 }
             }
@@ -312,7 +294,7 @@ int main(int argc, char *argv[])
                             nouveauSensEnnemi = ennemiSens[2][w]; // On affecte l'image � charger.
                             w++; // On incr�mente w.
                         }
-                    deplacement(carte, &positionEnnemis, 3, 1);
+                    deplacement(carte, &positionEnnemis, 3, 2);
                     variableSensEnnemi = 2;
                 }
             }
@@ -325,8 +307,8 @@ int main(int argc, char *argv[])
                             nouveauSensEnnemi = ennemiSens[0][w]; // On affecte l'image � charger.
                             w++; // On incr�mente w.
                         }
-                    deplacement(carte, &positionEnnemis, 4, 1);
-                    deplacement(carte, &positionEnnemis, 1, 1);
+                    deplacement(carte, &positionEnnemis, 4, 2);
+                    deplacement(carte, &positionEnnemis, 1, 2);
                 }
             }
         else if (((positionHero.x/TAILLE_BLOC)-1 == positionEnnemis.x/TAILLE_BLOC && (positionHero.y/TAILLE_BLOC)-1 == positionEnnemis.y/TAILLE_BLOC) ||
@@ -338,8 +320,8 @@ int main(int argc, char *argv[])
                             nouveauSensEnnemi = ennemiSens[1][w]; // On affecte l'image � charger.
                             w++; // On incr�mente w.
                         }
-                    deplacement(carte, &positionEnnemis, 4, 1);
-                    deplacement(carte, &positionEnnemis, 2, 1);
+                    deplacement(carte, &positionEnnemis, 4, 2);
+                    deplacement(carte, &positionEnnemis, 2, 2);
                 }
             }
         else if (((positionHero.x/TAILLE_BLOC)+1 == positionEnnemis.x/TAILLE_BLOC && (positionHero.y/TAILLE_BLOC)-1 == positionEnnemis.y/TAILLE_BLOC) ||
@@ -351,8 +333,8 @@ int main(int argc, char *argv[])
                             nouveauSensEnnemi = ennemiSens[1][w]; // On affecte l'image � charger.
                             w++; // On incr�mente w.
                         }
-                    deplacement(carte, &positionEnnemis, 3, 1);
-                    deplacement(carte, &positionEnnemis, 2, 1);
+                    deplacement(carte, &positionEnnemis, 3, 2);
+                    deplacement(carte, &positionEnnemis, 2, 2);
                 }
             }
         else if (((positionHero.x/TAILLE_BLOC)+1 == positionEnnemis.x/TAILLE_BLOC && (positionHero.y/TAILLE_BLOC)+1 == positionEnnemis.y/TAILLE_BLOC) ||
@@ -364,8 +346,8 @@ int main(int argc, char *argv[])
                             nouveauSensEnnemi = ennemiSens[0][w]; // On affecte l'image � charger.
                             w++; // On incr�mente w.
                         }
-                    deplacement(carte, &positionEnnemis, 3, 1);
-                    deplacement(carte, &positionEnnemis, 1, 1);
+                    deplacement(carte, &positionEnnemis, 3, 2);
+                    deplacement(carte, &positionEnnemis, 1, 2);
                 }
             }
 
@@ -575,7 +557,7 @@ int main(int argc, char *argv[])
         SDL_BlitSurface(textefin, NULL, ecran, &positionTexte);
         SDL_BlitSurface(textefin2, NULL, ecran, &positionTexte2);
         SDL_BlitSurface(textefin3, NULL, ecran, &positionTexte3);
-        SDL_Flip(ecran); // Rafra�chissement de l'�cran.
+		SDL_Flip(ecran); // Rafra�chissement de l'�cran.
         }
     SDL_EnableKeyRepeat(0,0);
     // Lib�ration des surfaces charg�es.

@@ -3,9 +3,7 @@
 Objet Arme
 
 ------------------------------*/
-#include "Arme.h"
-
-using namespace std;
+#include "breadman.h"
 
 Arme::Arme()
 {
@@ -13,8 +11,8 @@ Arme::Arme()
     puissance = 10;
 
 }
-void Arme::changeArme(int idArme){
-
+void Arme::changeArme(int idArme)
+{
     switch(idArme)
 	{
         case 1 :
@@ -34,7 +32,6 @@ void Arme::changeArme(int idArme){
             puissance = 100;
             break;
     }
-
 }
 
 int Arme::getPuissance()const

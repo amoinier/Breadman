@@ -1,9 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <SDL/SDL.h>
-
-#include "constantes.h"
-
+#include "breadman.h"
 
 bool collision(SDL_Rect *pos,SDL_Rect *posE, int sens)
 {

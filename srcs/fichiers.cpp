@@ -1,20 +1,15 @@
 /*-----------------------------
 
-Lecture et écriture du fichier
+Lecture et ï¿½criture du fichier
 "level.map"
 
 ------------------------------*/
-#include <stdlib.h>
-#include <stdio.h>
-#include <SDL/SDL.h>
-
-#include "constantes.h"
-#include "fichiers.h"
+#include "breadman.h"
 
 int chargerNiveau(int niveau[][NB_BLOCS_HAUTEUR])
 {
     FILE *fichier = NULL;
-    char ligneFichier[NB_BLOCS_LARGEUR * NB_BLOCS_HAUTEUR + 1] = {0}; // Création d'un tableau 'char'.
+    char ligneFichier[NB_BLOCS_LARGEUR * NB_BLOCS_HAUTEUR + 1] = {0}; // Crï¿½ation d'un tableau 'char'.
     int i = 0, j = 0;
 
     fichier = fopen("niveaux.map", "r"); // Ouverture du fichier 'niveaux.map'.

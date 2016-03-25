@@ -3,10 +3,7 @@
 Objet Personnage
 
 ------------------------------*/
-#include "Personnage.h"
-#include "Arme.h"
-
-using namespace std;
+#include "breadman.h"
 
 Personnage::Personnage()
 {
