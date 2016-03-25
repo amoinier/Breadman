@@ -6,7 +6,7 @@
 #    By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/07 12:02:38 by amoinier          #+#    #+#              #
-#    Updated: 2016/03/09 15:07:35 by amoinier         ###   ########.fr        #
+#    Updated: 2016/03/25 14:41:49 by amoinier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ all: $(NAME)
 
 $(NAME): header $(OBCC)
 	@echo "  ${BLU}+ Compilation program:${STD} $@"
-	@g++ $(OBCC) -g -I./incs/ -I/Library/Frameworks/SDL.framework/Headers SDLmain.m -framework SDL -framework SDL_ttf -framework Cocoa -o $(NAME)
+	@g++ $(OBCC) -g -I./incs/ -I/Library/Frameworks/SDL.framework/Headers SDLMain.m -framework SDL -framework Cocoa -o $(NAME)
 
 $(ODIR)%.o: $(SDIR)%.cpp
 	@echo "  ${GRE}+ Compilation:${STD} $^"

@@ -11,7 +11,6 @@ Gestion principale de la SDL
 #include <SDL/SDL.h>
 #include <iostream>
 #include <string>
-#include <SDL/SDL_ttf.h>
 
 // Include des fonctions et objets dans les autres fichiers.
 #include "constantes.h"
@@ -54,9 +53,6 @@ int main(int argc, char *argv[])
 
     SDL_Init(SDL_INIT_VIDEO); // Initialisation de la partie vid�o de la SDL.
 
-    TTF_Init();
-    TTF_Font *police = NULL;
-    police = TTF_OpenFont("testpolice.ttf", 100);
     SDL_Color blanc = {255,255,255};
 
     ecran = SDL_SetVideoMode(LARGEUR_FENETRE, HAUTEUR_FENETRE, 32, SDL_HWSURFACE|SDL_DOUBLEBUF); // D�finition de l'�cran.
@@ -560,13 +556,6 @@ int main(int argc, char *argv[])
                     positionHero.y = 1500;
                     positionEnnemis.x = 1500;
                     positionEnnemis.y = 1500;
-                    if (tempsActuel-tempsPrecedent6 >1000)
-					{
-                        tempsPrecedent6 = tempsActuel;
-                        textefin = TTF_RenderText_Blended(police, perdue, blanc);
-                        textefin2 = TTF_RenderText_Blended(police, "Vous avez perdu.", blanc);
-                        textefin3 = TTF_RenderText_Blended(police, hs, blanc);
-                    }
                 }
             }
         }
@@ -598,8 +587,6 @@ int main(int argc, char *argv[])
     SDL_FreeSurface(textefin2);
     SDL_FreeSurface(textefin);
     SDL_FreeSurface(coeur);
-    TTF_CloseFont(police);
-    TTF_Quit();
     SDL_Quit();
     return EXIT_SUCCESS;
 }
